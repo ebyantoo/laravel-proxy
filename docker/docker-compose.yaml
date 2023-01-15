@@ -1,7 +1,7 @@
 version: '3'
 services:
   
-  # PHP Service
+  # PHP SERVICE
   app:
     build:
       context: .
@@ -20,7 +20,7 @@ services:
     networks:
       - app-network
 
-  # Nginx Service
+  # Nginx SERVICE
   webserver:
     image: nginx:alpine
     container_name: webserver
@@ -35,7 +35,7 @@ services:
     networks:
       - app-network
 
-  # MySQL Service
+  # MySQL SERVICE
   db:
     image: mysql:5.7.22
     container_name: db
