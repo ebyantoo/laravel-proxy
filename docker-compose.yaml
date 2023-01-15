@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: digitalocean.com/php
+    image: ebyantoo/php7.4
     container_name: app
     restart: unless-stopped
     tty: true
@@ -20,7 +20,7 @@ services:
     networks:
       - app-network
 
-  # Nginx SERVICE
+  # NGINX SERVICE
   webserver:
     image: nginx:alpine
     container_name: webserver
@@ -35,7 +35,7 @@ services:
     networks:
       - app-network
 
-  # MySQL SERVICE
+  # MYSQL SERVICE
   db:
     image: mysql:5.7.22
     container_name: db
@@ -45,7 +45,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: your_mysql_root_password
+      MYSQL_ROOT_PASSWORD: laravel_pass
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
@@ -54,11 +54,12 @@ services:
     networks:
       - app-network
 
-# Docker Networks
+# DOCKER NETWORKS
 networks:
   app-network:
     driver: bridge
-# Volumes
+
+# VOLUMES
 volumes:
   dbdata:
     driver: local
